@@ -1,0 +1,77 @@
+@use '/src/components/variables' as v;
+
+.header__content {
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  height: 61px;
+  img {
+    height: 16px;
+  }
+}
+
+
+.header__contacts {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  width: 430px;
+  li {
+    display: inline;
+    margin-right: 20px;
+  }
+  a {
+    color: v.$color4;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
+
+.header__links {
+  li {
+    display: inline;
+    margin-left: 30px;
+
+    a {
+      color: v.$color4;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+}
+
+.header__toolbar {
+  display: flex;
+  align-items: center;
+  height: 107px;
+}
+
+.header__logo {
+  height: 65px;
+}
+
+.header__cta {
+  text-align: right;
+  list-style-type: none;
+  li {
+    font-size: 12px;
+  };
+  a {
+    font-size: 14px;
+  };
+}
+
+.cta__img {
+  height: 92px;
+}
+
+.header__breadcrumbs {
+  display: flex;
+  font-size: 14px;
+  color: v.$color4;
+  p {
+    margin-right: 10px;
+  }
+}

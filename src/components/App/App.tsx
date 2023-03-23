@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
-import {data} from "../../state/state";
+import {CatalogPage} from "../CatalogPage/CatalogPage";
+import {Header} from "../Header/Header";
+import {Footer} from "../Footer/Footer";
 
 function App() {
-  let tempState = JSON.stringify(data)
-  console.log(JSON.parse(tempState))
   return (
     <div className="App">
-      <h1>Here will be Sultan Shop</h1>
-      {JSON.stringify(data)}
+      <Header/>
+      <CatalogPage/>
+      <Footer/>
     </div>
   );
 }

@@ -1,0 +1,56 @@
+@use '/src/components/variables' as v;
+
+.container {
+  max-width: 1370px;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+.button {
+  background: v.$color5;
+  border: none;
+  border-radius: 80px;
+  color: #FFFFFF;
+}
+  .buttonBig {
+    @extend .button;
+    width: 200px;
+    height: 60px;
+  }
+  .buttonMedium {
+    @extend .button;
+      width: 170px;
+      height: 60px;
+    }
+  .buttonSmall {
+    @extend .button;
+    width: 153px;
+    height: 45px;
+  }
+  .buttonRound {
+    @extend .button;
+    width: 59px;
+    height: 59px;
+  }
+
+
+.input {
+  height: 60px;
+  background-color: v.$color3;
+  border-radius: 36px;
+  border: none;
+}
+  .inputWide {
+    @extend .input;
+    width: 263px;
+  }
+  .inputRegular {
+    @extend .input;
+    width: 238px;
+  }
+  .inputFooter {
+    @extend .input;
+    background-color: v.$color2;
+    width: 282px;
+  }
+

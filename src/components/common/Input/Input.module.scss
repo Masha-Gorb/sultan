@@ -1,0 +1,17 @@
+@use '/src/components/variables' as v;
+
+.inputContainer {
+
+}
+
+.inputButton {
+  position: relative;
+  top: 3px;
+  right: 50px;
+
+  width: 39px;
+  height: 39px;
+  background: v.$color5;
+  border: none;
+  border-radius: 80px;
+}

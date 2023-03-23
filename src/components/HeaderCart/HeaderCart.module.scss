@@ -1,0 +1,19 @@
+@use '/src/components/variables' as v;
+
+
+.header__cart {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 200px;
+  border: 1px solid red;
+}
+
+.cart__count {
+  height: 22px;
+  width: 22px;
+  border: 2px solid v.$color2;
+  border-radius: 15px;
+  background-color: v.$color5;
+  color: v.$color2;
+}

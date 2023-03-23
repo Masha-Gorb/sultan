@@ -1,0 +1,52 @@
+@use '/src/components/variables' as v;
+
+.catalog__page {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+    li {
+    display: inline;
+    margin-right: 20px;
+    };
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.catalog__main {
+  display: flex;
+}
+
+.catalog__categories {
+  li {
+    display: inline;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}
+
+.catalog__aside {
+  border: 1px solid green;
+}
+
+.catalog__column {
+  font-size: 14px;
+  width: 245px;
+  ul {
+    text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  };
+  li {
+    display: block;
+    margin-top: 10px;
+  };
+}
+
+.catalog__cards {
+  display: flex;
+  margin-left: 90px;
+}
