@@ -3,10 +3,28 @@
 
 .header__cart {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
-  width: 200px;
-  border: 1px solid red;
+  width: 115px;
+
+  p {
+    color: v.$color4;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+}
+
+.cart__icon {
+  position: relative;
+  left: 25px;
+  img {
+    position: absolute;
+    right: 5px;
+    top: 1px;
+    z-index: -1;
+    margin-right: 5px;
+  }
 }
 
 .cart__count {

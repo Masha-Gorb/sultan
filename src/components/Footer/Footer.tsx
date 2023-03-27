@@ -3,6 +3,7 @@ import footer__logo from './../icons/footer__logo.svg'
 import footer__telegram from './../icons/footer__telegram.svg'
 import footer__whatsup from './../icons/footer__whatsup.svg'
 import footer__visa from './../icons/footer__visa.svg'
+import priceIcon from './../icons/price_list.svg'
 import footer__mastercard from './../icons/footer__mastercard.svg'
 import s from "./Footer.module.scss";
 import gs from "../global.module.scss"
@@ -12,7 +13,7 @@ import {Button} from "../common/Button/Button";
 
 export const Footer = () => {
   return (
-    <div>
+    <div className={s.footer__background}>
         <div className={gs.container}>
           <div className={s.footer__content}>
 
@@ -51,25 +52,32 @@ export const Footer = () => {
               <h4>Скачать прайс-лист:</h4>
               <Button className={gs.buttonBig}
                       title='Прайс-лист'
+                      icon={priceIcon}
                       foo={() => alert('пока тупая кнопка')}/>
               <p>Связь в мессенджерах:</p>
-              <div>
+
+              <div className={s.footer__icons}>
                 <img src={footer__whatsup} alt=''/>
                 <img src={footer__telegram} alt=''/>
               </div>
+
             </div>
 
             <div className={s.footer__column}>
-              <h4>Контакты:</h4>
-              <ul className={s.header__cta}>
-                <li><b>+7 (777) 490-00-91</b></li>
-                <li><p>время работы: 9:00-20:00</p></li>
-                <li><u>Заказать звонок</u></li>
-              </ul>
-              <a href=" ">opt.sultan@mail.ru</a>
-              <br/>
-              <a href=" ">На связи в любое время</a>
-              <div>
+
+
+              <div className={s.footer__cta}>
+                <h4>Контакты:</h4>
+                <p><b>+7 (777) 490-00-91</b></p>
+                <p>время работы: 9:00-20:00</p>
+                <p><u>Заказать звонок</u></p>
+                <br/>
+                <a href=" "><b>opt.sultan@mail.ru</b></a>
+                <br/>
+                <a href=" ">На связи в любое время</a>
+              </div>
+
+              <div className={s.footer__icons}>
                 <img src={footer__visa} alt=''/>
                 <img src={footer__mastercard} alt=''/>
               </div>

@@ -6,6 +6,7 @@ export type ProductType = {
   id: string,
   categories: CategoriesType[],
   img: string,
+  icon: string,
   title: string,
   unit: string,
   weight: number,

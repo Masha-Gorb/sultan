@@ -1,8 +1,12 @@
 @use '/src/components/variables' as v;
 
+.footer__background {
+  background-color: v.$color4;
+}
 
 .footer__content {
   display: flex;
+  justify-content: space-between;
   height: 500px;
   background-color: v.$color4;
   color: v.$color2;
@@ -31,4 +35,19 @@
 
 .footer__column {
   margin-top: 70px;
+}
+
+.footer__cta {
+  text-align: left;
+  a {
+    text-align: left;
+  }
+
+}
+
+.footer__icons {
+  img {
+    margin-top: 15px;
+    margin-right: 10px;
+  }
 }

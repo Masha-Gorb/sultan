@@ -1,14 +1,13 @@
 import search from './../../icons/search.svg'
-import s from './Input.module.scss'
 
 
 export const Input = (props: any) => {
   return (
-    <div>
-      <input className={props.className}
+    <div className={props.className}>
+      <input
              type={"text"}
              placeholder={props.placeholder}/>
-      <button className={s.inputButton}>
+      <button>
         <img src={search} alt=''/>
       </button>
     </div>

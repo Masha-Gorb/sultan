@@ -3,7 +3,7 @@
 .container {
   max-width: 1370px;
   margin: 0 auto;
-  border: 1px solid red;
+  //border: 1px solid red;
 }
 
 .button {
@@ -29,28 +29,54 @@
   }
   .buttonRound {
     @extend .button;
-    width: 59px;
-    height: 59px;
+    width: 45px;
+    height: 45px;
   }
 
 
-.input {
-  height: 60px;
-  background-color: v.$color3;
-  border-radius: 36px;
-  border: none;
+.customInput {
+  position: relative;
+  input {
+    height: 60px;
+    background-color: v.$color3;
+    border-radius: 36px;
+    border: none;
+  }
+
+  button {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+
+    width: 39px;
+    height: 39px;
+    background: v.$color5;
+    border: none;
+    border-radius: 80px;
+  }
 }
   .inputWide {
-    @extend .input;
-    width: 263px;
+    @extend .customInput ;
+    input {
+      width: 263px;
+    }
   }
   .inputRegular {
-    @extend .input;
-    width: 238px;
+    @extend .customInput ;
+    input {
+      width: 238px;
+    }
+
   }
   .inputFooter {
-    @extend .input;
-    background-color: v.$color2;
-    width: 282px;
+    @extend .customInput ;
+    input {
+      background-color: v.$color2;
+      width: 282px;
+    };
+    button {
+      right: 50px;
+    }
   }
+
 

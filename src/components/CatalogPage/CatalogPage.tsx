@@ -1,7 +1,10 @@
 import React from "react";
 import s from "./CatalogPage.module.scss";
 import gs from "../global.module.scss"
-import {CatalogCard} from "../CatalogCard/CatalogCard";
+import {ProductCardSmall} from "../common/ProductCardSmall/ProductCardSmall";
+import {data} from "../../state/state";
+import {FilterPanel} from "../common/FilterPanel/FilterPanel";
+import {Button} from "../common/Button/Button";
 
 
 export const CatalogPage = () => {
@@ -9,26 +12,57 @@ export const CatalogPage = () => {
     <div className={gs.container}>
     <div className={s.catalog__page}>
 
+
+      <div className={s.catalog__titleAndSorting}>
         <h1 className={s.h1}>Косметика и гигиена</h1>
+        <div className={s.catalog__sorting}>
+          <label>
+            <b>{'Сортировка: '}</b>
+            <select>
+              <option>Название</option>
+              <option>Цена: по убыванию</option>
+              <option>Цена: по возрастанию</option>
+            </select>
+          </label>
+
+        </div>
+      </div>
+
+
       <div className={s.catalog__categories}>
-        <ul>
-          <li>Уход за телом</li>
-          <li>Уход за руками</li>
-          <li>Уход за ногами</li>
-          <li>Уход за лицом</li>
-          <li>Уход за волосами</li>
-          <li>Средства для загара</li>
-          <li>Средства для бритья</li>
-          <li>Подарочные наборы</li>
-          <li>Гигиеническая продукция</li>
-          <li>Гигиена полости рта</li>
-          <li>Бумажная продукция</li>
-        </ul>
+        <div className={s.categories__first}>Уход за телом</div>
+        <div>Уход за руками</div>
+        <div>Уход за ногами</div>
+        <div>Уход за лицом</div>
+        <div>Уход за волосами</div>
+        <div>Средства для загара</div>
+        <div>Средства для бритья</div>
+        <div>Подарочные наборы</div>
+        <div>Гигиеническая продукция</div>
+        <div>Гигиена полости рта</div>
+        <div>Бумажная продукция</div>
       </div>
 
 
         <section className={s.catalog__main}>
           <aside className={s.catalog__aside}>
+
+            <FilterPanel title={'Производитель'}/>
+            <hr/>
+            <FilterPanel title={'Бренд'}/>
+
+            <div className={s.catalog__filterButtons}>
+              <Button className={gs.buttonSmall}
+                      title='Показать'
+                      foo={() => alert('пока тупая кнопка')}/>
+
+              <Button className={gs.buttonRound}
+                         title='n'
+                         foo={() => alert('пока тупая кнопка')}/>
+            </div>
+
+
+
 
             <div className={s.catalog__column}>
               <h4>УХОД ЗА ТЕЛОМ</h4>
@@ -118,14 +152,30 @@ export const CatalogPage = () => {
 
           </aside>
 
-          <section className={s.catalog__cards}>
-            <CatalogCard/>
-            <CatalogCard/>
-            <CatalogCard/>
-          </section>
+          <div className={s.catalog__cards}>
+            {data.map( m => {
+              return <ProductCardSmall
+                id={m.id}
+                img={m.img}
+                icon={m.icon}
+                weight={m.weight}
+                unit={m.unit}
+                title={m.title}
+                barcode={m.barcode}
+                manufacturer={m.manufacturer}
+                brand={m.brand}
+                price={m.price}
+                description={m.description}
+                categories={m.categories}
+              />
+            })}
+
+          </div>
         </section>
 
-
+      <div className={s.catalog__bottomText}>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.</p>
+      </div>
 
       </div>
     </div>
