@@ -155,6 +155,7 @@ export const CatalogPage = () => {
           <div className={s.catalog__cards}>
             {data.map( m => {
               return <ProductCardSmall
+                key={m.id}
                 id={m.id}
                 img={m.img}
                 icon={m.icon}

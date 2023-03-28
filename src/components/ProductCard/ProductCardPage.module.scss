@@ -1,0 +1,108 @@
+@use '/src/components/variables' as v;
+
+.productCardPage__wrapper {
+  display: flex;
+  //justify-content: space-between;
+  margin-bottom: 200px;
+}
+
+.productCardPage__img {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 630px;
+  img {
+    height: 470px;
+  }
+}
+
+.productCardPage__main {
+  width: 670px;
+  text-align: left;
+  margin-left: 40px;
+  h2 {
+    margin-top: 0;
+    font-size: 30px;
+    font-weight: normal;
+  };
+  p {
+    color: #1FD85D;
+    font-size: 14px;
+  }
+}
+
+.productCardPage__priceBlock {
+  display: flex;
+  justify-content: space-between;
+  width: 550px;
+}
+
+
+
+.productCardPage__priceBlock {
+  display: flex;
+  align-items: center;
+  p {
+    color: v.$color1;
+    font-weight: 800;
+    font-size: 30px;
+  }
+}
+
+.productCardPage__share {
+  display: flex;
+  width: 600px;
+  margin-bottom: 35px;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 57px;
+    padding: 10px;
+    box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.08);
+    border-radius: 10px;
+    a {
+      color: v.$color4;
+      text-decoration: none;
+      font-size: 12px;
+    }
+  };
+  .productCardPage__shareIcon {
+    width: 77px;
+  };
+  .productCardPage__shareAdd {
+    text-align: center;
+    width: 320px;
+    margin-left: 10px;
+  };
+  .productCardPage__sharePriceList {
+    width: 183px;
+    margin-left: 10px;
+  };
+}
+
+.productCardPage__info {
+  p {
+    color: v.$color4;
+    b {
+      font-weight: 500;
+      color: v.$color1;
+    };
+  }
+};
+
+.productCardPage__description {
+  span {
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+  p {
+    margin-top: 5px;
+    color: v.$color4;
+    b {
+      font-weight: 500;
+      color: v.$color1;
+    };
+  }
+
+}

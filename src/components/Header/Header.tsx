@@ -12,6 +12,7 @@ import {Button} from "../common/Button/Button";
 import {Input} from "../common/Input/Input";
 import {HeaderCart} from "../HeaderCart/HeaderCart";
 import priceIcon from "../icons/price_list.svg";
+import {Link} from "react-router-dom";
 
 
 export const Header = () => {
@@ -55,9 +56,9 @@ export const Header = () => {
             <img className={s.header__logo} src={logo} alt=''/>
             <div className={s.header__buttonAndInputContainer}>
               <Button className={gs.buttonMedium}
-                      title='Каталог'
+                      title={<Link to="/catalog">{"Каталог"}</Link>}
                       icon={catalogButton}
-                      foo={() => alert('пока тупая кнопка')}/>
+                      foo={() => console.log('пока тупая кнопка')}/>
               <Input className={gs.inputWide}
                      placeholder={'      Поиск...'}/>
             </div>

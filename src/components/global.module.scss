@@ -11,6 +11,10 @@
   border: none;
   border-radius: 80px;
   color: #FFFFFF;
+  a {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
 }
   .buttonBig {
     @extend .button;

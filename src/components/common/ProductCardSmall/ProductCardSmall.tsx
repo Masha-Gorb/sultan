@@ -5,6 +5,7 @@ import s from './ProductCardSmall.module.scss'
 import {firstWord} from "../../../helpers/firstWord";
 import {titleWithoutFirstWord} from "../../../helpers/titleWithoutFirsWord";
 import {ProductType} from "../../../types";
+import {Link} from "react-router-dom";
 
 export const ProductCardSmall = (props: ProductType) => {
   return (
@@ -21,8 +22,10 @@ export const ProductCardSmall = (props: ProductType) => {
       </p>
 
         <span>
-          <b>{firstWord(props.title) + ' '}</b>
-          {titleWithoutFirstWord(props.title)}
+          <Link to={`${props.id}`}>
+            <b>{firstWord(props.title) + ' '}</b>
+            {titleWithoutFirstWord(props.title)}
+          </Link>
         </span>
 
       <div className={s.productCardSmall__description}>
