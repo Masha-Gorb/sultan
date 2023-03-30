@@ -5,9 +5,12 @@ import {ProductCardSmall} from "../common/ProductCardSmall/ProductCardSmall";
 import {data} from "../../state/state";
 import {FilterPanel} from "../common/FilterPanel/FilterPanel";
 import {Button} from "../common/Button/Button";
+import cart from "../icons/cart_button.svg";
 
 
 export const CatalogPage = () => {
+
+
   return (
     <div className={gs.container}>
     <div className={s.catalog__page}>
@@ -42,10 +45,11 @@ export const CatalogPage = () => {
         <div>Гигиена полости рта</div>
         <div>Бумажная продукция</div>
       </div>
-
-
         <section className={s.catalog__main}>
           <aside className={s.catalog__aside}>
+
+            <h3>Подбор по параметрам</h3>
+            <p>тут еще подбор по цене будет</p>
 
             <FilterPanel title={'Производитель'}/>
             <hr/>
@@ -57,12 +61,10 @@ export const CatalogPage = () => {
                       foo={() => alert('пока тупая кнопка')}/>
 
               <Button className={gs.buttonRound}
-                         title='n'
+                         title=''
+                         icon={cart}
                          foo={() => alert('пока тупая кнопка')}/>
             </div>
-
-
-
 
             <div className={s.catalog__column}>
               <h4>УХОД ЗА ТЕЛОМ</h4>
@@ -77,7 +79,6 @@ export const CatalogPage = () => {
                 <li>Гели для душа</li>
               </ul>
             </div>
-
             <div className={s.catalog__column}>
             <h4>УХОД ЗА РУКАМИ</h4>
             <ul>
@@ -90,7 +91,6 @@ export const CatalogPage = () => {
               <li>Жидкость для снятия лака</li>
             </ul>
             </div>
-
             <div className={s.catalog__column}>
               <h4>УХОД ЗА НОГАМИ</h4>
               <ul>
@@ -100,7 +100,6 @@ export const CatalogPage = () => {
                 <li>Дезодоранты для ног</li>
               </ul>
             </div>
-
             <div className={s.catalog__column}>
               <h4>УХОД ЗА ЛИЦОМ</h4>
             <ul>
@@ -114,7 +113,6 @@ export const CatalogPage = () => {
               <li>Гигиеническая помада</li>
             </ul>
             </div>
-
             <div className={s.catalog__column}>
               <h4>УХОД ЗА ВОЛОСАМИ</h4>
             <ul>
@@ -125,14 +123,12 @@ export const CatalogPage = () => {
               <li>Кондиционеры, бальзамы</li>
             </ul>
             </div>
-
             <div className={s.catalog__column}>
               <h4>СРЕДСТВА ДЛЯ ЗАГАРА</h4>
               <ul>
                 <li>Средства после загара</li>
               </ul>
             </div>
-
             <div className={s.catalog__column}>
               <h4>СРЕДСТВА ДЛЯ БРИТЬЯ</h4>
               <ul>
@@ -141,7 +137,6 @@ export const CatalogPage = () => {
                 <li>Для бритья</li>
               </ul>
             </div>
-
             <div className={s.catalog__column}>
               <h4>ПОДАРОЧНЫЕ НАБОРЫ</h4>
               <ul>

@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import {CatalogPage} from "../CatalogPage/CatalogPage";
 import { Routes, Route} from "react-router-dom";
-import {ProductCardPage} from "../ProductCard/ProductCardPage";
+import {ProductCardPage} from "../ProductCardPage/ProductCardPage";
 import {NotFoundPage} from "../NotFoundPage/NotFoundPage";
 import {IntroPage} from "../IntroPage/IntroPage";
 import {Layout} from "../Layout/Layout";
+import {CartPage} from "../CartPage/CartPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<IntroPage />}/>
           <Route path="catalog" element={<CatalogPage />}/>
           <Route path="catalog/:id" element={<ProductCardPage />}/>
+          <Route path="cart" element={<CartPage />}/>
           <Route path="*" element={<NotFoundPage />}/>
         </Route>
       </Routes>

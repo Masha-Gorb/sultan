@@ -10,7 +10,7 @@ import s from "./Header.module.scss";
 import gs from "../global.module.scss";
 import {Button} from "../common/Button/Button";
 import {Input} from "../common/Input/Input";
-import {HeaderCart} from "../HeaderCart/HeaderCart";
+import {HeaderCart} from "../common/HeaderCart/HeaderCart";
 import priceIcon from "../icons/price_list.svg";
 import {Link} from "react-router-dom";
 
@@ -80,7 +80,7 @@ export const Header = () => {
 
             <img style={{height: "40px", marginLeft: "30px", marginRight: "20px"}} src={vertical} alt=''/>
 
-            <HeaderCart count={3} sum={'12 478 ₸'}/>
+            <HeaderCart/>
           </div>
 
           <div className={s.header__breadcrumbs}>

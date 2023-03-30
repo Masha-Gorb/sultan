@@ -67,7 +67,7 @@ export const ProductCardPage = () => {
             <span>Описание</span>
             <p>{product.description}</p>
             <span>Характеристики</span>
-            <p>Название: <b>{product.title}</b></p>
+            <p>Название: <b>{firstWord(product.title) + ' '}</b></p>
             <p>Тип: <b>{product.brand}</b></p>
             <p>Производитель: <b>{product.manufacturer}</b></p>
             <p>Бренд: <b>{product.brand}</b></p>

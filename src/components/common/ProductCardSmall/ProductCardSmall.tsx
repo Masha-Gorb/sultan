@@ -6,8 +6,14 @@ import {firstWord} from "../../../helpers/firstWord";
 import {titleWithoutFirstWord} from "../../../helpers/titleWithoutFirsWord";
 import {ProductType} from "../../../types";
 import {Link} from "react-router-dom";
+import {useAppDispatch} from "../../../store/hooks";
+import {addToCart} from "../../../store/cartSlice";
 
 export const ProductCardSmall = (props: ProductType) => {
+
+  const dispatch = useAppDispatch();
+
+
   return (
     <div className={s.catalogCard}>
       <div className={s.productCardSmall__img}>
@@ -40,7 +46,7 @@ export const ProductCardSmall = (props: ProductType) => {
         <Button className={gs.buttonSmall}
                 title='В корзину'
                 icon={cart}
-                foo={() => alert('пока тупая кнопка')}/>
+                foo={() => (dispatch(addToCart(props)))}/>
       </div>
 
 

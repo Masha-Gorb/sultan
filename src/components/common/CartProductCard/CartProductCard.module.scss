@@ -1,0 +1,58 @@
+@use '/src/components/variables' as v;
+
+.cartProductCard__main {
+  display: flex;
+  justify-content: space-between;
+  height: 170px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-top: 2px dashed rgba(63, 78, 101, 0.45);
+
+  .cartProductCard__img {
+    display: flex;
+    justify-content: center;
+    width: 280px;
+    height: 190px;
+    img {
+      height: 190px;
+    }
+
+  }
+}
+
+
+
+.cartProductCard__info {
+  display: flex;
+  flex-direction: column;
+  width: 440px;
+
+  .cartProductCard__weight {
+    display: flex;
+    align-items: center;
+    width: 60px;
+  }
+
+  .cartProductCard__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  };
+
+  img {
+    height: 15px;
+    opacity: 0.4;
+  };
+
+  p {
+    font-size: 12px;
+  };
+};
+
+.cartProductCard__price {
+  font-weight: 700;
+  font-size: 30px;
+}

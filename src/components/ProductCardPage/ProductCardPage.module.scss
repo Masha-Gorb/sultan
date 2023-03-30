@@ -2,7 +2,7 @@
 
 .productCardPage__wrapper {
   display: flex;
-  //justify-content: space-between;
+  margin-top: 60px;
   margin-bottom: 200px;
 }
 
@@ -92,6 +92,7 @@
 };
 
 .productCardPage__description {
+  width: 610px;
   span {
     margin-bottom: 15px;
     margin-top: 20px;

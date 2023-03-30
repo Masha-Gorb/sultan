@@ -1,6 +1,4 @@
-export type ProductsType = {
-  state: ProductType[]
-}
+export type ProductsType = ProductType[]
 
 export type ProductType = {
   id: string,
