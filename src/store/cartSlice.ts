@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import {ProductsType, ProductType} from "../types";
+import {ProductType} from "../types";
 
 export interface CartState {
-  orderedProducts: ProductsType
+  orderedProducts: ProductType[]
 }
 
 const initialState: CartState = {
@@ -28,5 +28,5 @@ export const cartSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { addToCart } = cartSlice.actions
-export const selectCount = (state: any) => state.cart.value
+// export const selectCount = (state: any) => state.cart.value
 export default cartSlice.reducer

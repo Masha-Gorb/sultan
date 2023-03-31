@@ -10,8 +10,6 @@ import React from "react";
 export const CartPage = () => {
 
   const {orderedProducts} = useAppSelector(state => state.cartReducer);
-  console.log(orderedProducts);
-
   const dispatch = useAppDispatch();
   const {deleteCart} = cartSlice.actions
 

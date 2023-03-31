@@ -1,7 +1,7 @@
 export let data = [
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120002",
-        "categories": ["hands", "hygiene"],
+        "categories": ["body"],
         "img": "img/aos.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS средство для мытья посуды Crystal",
@@ -29,7 +29,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120004",
-        "categories": ["hygiene", "gifts"],
+        "categories": ["hygiene", "body"],
         "img": "img/biMax.png",
         "icon": "img/productCard_box.svg",
         "title": "BIMAX Порошок стиральный Автомат 100 пятен COMPACT",
@@ -43,7 +43,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120005",
-        "categories": ["hands", "hygiene", "body"],
+        "categories": ["hands"],
         "img": "img/bioMio.png",
         "icon": "img/productCard_box.svg",
         "title": "BioMio BIO-SOAP Экологичное туалетное мыло. Литсея и бергамот",
@@ -57,7 +57,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120006",
-        "categories": ["hands"],
+        "categories": ["hands", "face"],
         "img": "img/sorti.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS Ср-во для мытья посуды Апельсин+мята",
@@ -71,7 +71,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120007",
-        "categories": ["hands"],
+        "categories": ["body"],
         "img": "img/aos.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS средство для мытья посуды Crystal",
@@ -85,7 +85,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120008",
-        "categories": [],
+        "categories": ["hygiene"],
         "img": "img/ariel.png",
         "icon": "img/productCard_box.svg",
         "title": "ARIEL Автмат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",
@@ -99,7 +99,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120009",
-        "categories": [],
+        "categories": ["hygiene", "body"],
         "img": "img/biMax.png",
         "icon": "img/productCard_box.svg",
         "title": "BIMAX Порошок стиральный Автомат 100 пятен COMPACT",
@@ -113,7 +113,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120010",
-        "categories": ["hands", "hygiene", "body"],
+        "categories": ["hands"],
         "img": "img/bioMio.png",
         "icon": "img/productCard_box.svg",
         "title": "BioMio BIO-SOAP Экологичное туалетное мыло. Литсея и бергамот",
@@ -127,7 +127,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120011",
-        "categories": ["hands", "hygiene"],
+        "categories": ["hands", "face"],
         "img": "img/sorti.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS Ср-во для мытья посуды Апельсин+мята",
@@ -141,7 +141,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120012",
-        "categories": ["hands"],
+        "categories": ["body"],
         "img": "img/aos.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS средство для мытья посуды Crystal",
@@ -155,7 +155,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120013",
-        "categories": [],
+        "categories": ["hygiene"],
         "img": "img/ariel.png",
         "icon": "img/productCard_box.svg",
         "title": "ARIEL Автмат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",
@@ -169,7 +169,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120014",
-        "categories": [],
+        "categories": ["hygiene", "body"],
         "img": "img/biMax.png",
         "icon": "img/productCard_box.svg",
         "title": "BIMAX Порошок стиральный Автомат 100 пятен COMPACT",
@@ -183,7 +183,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120015",
-        "categories": ["hands", "hygiene", "body"],
+        "categories": ["hands"],
         "img": "img/bioMio.png",
         "icon": "img/productCard_box.svg",
         "title": "BioMio BIO-SOAP Экологичное туалетное мыло. Литсея и бергамот",
@@ -197,7 +197,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120016",
-        "categories": ["hands", "hygiene"],
+        "categories": ["hands", "face"],
         "img": "img/sorti.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS Ср-во для мытья посуды Апельсин+мята",
@@ -211,7 +211,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120017",
-        "categories": ["hands"],
+        "categories": ["body"],
         "img": "img/aos.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS средство для мытья посуды Crystal",
@@ -225,7 +225,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120018",
-        "categories": [],
+        "categories": ["hygiene"],
         "img": "img/ariel.png",
         "icon": "img/productCard_box.svg",
         "title": "ARIEL Автмат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",
@@ -239,7 +239,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120019",
-        "categories": ["hygiene"],
+        "categories": ["hygiene", "body"],
         "img": "img/biMax.png",
         "icon": "img/productCard_box.svg",
         "title": "BIMAX Порошок стиральный Автомат 100 пятен COMPACT",
@@ -253,7 +253,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120020",
-        "categories": ["hands", "hygiene", "body"],
+        "categories": ["hands"],
         "img": "img/bioMio.png",
         "icon": "img/productCard_box.svg",
         "title": "BioMio BIO-SOAP Экологичное туалетное мыло. Литсея и бергамот",
@@ -267,7 +267,7 @@ export let data = [
     },
     {
         "id": "730718ae-6c31-11ed-a1eb-0242ac120021",
-        "categories": ["hands", "hygiene"],
+        "categories": ["hands", "face"],
         "img": "img/sorti.png",
         "icon": "img/productCard_bottle.svg",
         "title": "AOS Ср-во для мытья посуды Апельсин+мята",

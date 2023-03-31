@@ -2,7 +2,7 @@ export type ProductsType = ProductType[]
 
 export type ProductType = {
   id: string,
-  categories: CategoriesType[],
+  categories: CategoryType[],
   img: string,
   icon: string,
   title: string,
@@ -15,4 +15,4 @@ export type ProductType = {
   price: number,
 }
 
-export type CategoriesType = string
+export type CategoryType = string

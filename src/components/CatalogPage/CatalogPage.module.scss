@@ -40,6 +40,11 @@ h1 {
 
 }
 
+.catalog__filterButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+}
 
 .catalog__categories {
   display: flex;
@@ -56,15 +61,17 @@ h1 {
     box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.09);
     border-radius: 10px;
     margin-left: 10px;
+    button {
+      border: transparent;
+      padding: 12px;
+      border-radius: 10px;
+      background-color: transparent;
+    }:hover {
+       background-color: v.$color3;
+     }
   } .categories__first {
-        margin-left: 0;
-      };
-}
-
-.catalog__filterButtons {
-  display: flex;
-  justify-content: space-between;
-  width: 210px;
+      margin-left: 0;
+    };
 }
 
 .catalog__aside {
@@ -72,18 +79,24 @@ h1 {
 }
 
 .catalog__column {
-  font-size: 14px;
-  width: 245px;
-  ul {
-    text-align: left;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  };
-  li {
-    display: block;
-    margin-top: 10px;
-  };
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  margin-top: 25px;
+  div {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    height: 50px;
+    button {
+      border: transparent;
+      padding: 12px;
+      border-radius: 10px;
+      background-color: transparent;
+    }:hover {
+       background-color: v.$color3;
+     }
+  }
 }
 
 .catalog__cards {

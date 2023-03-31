@@ -8,8 +8,7 @@ import {cartSlice} from "../../../store/cartSlice";
 
 export const CartProductCard = (props: any) => {
   const dispatch = useAppDispatch();
-  const {removeFromCart} = cartSlice.actions
-  console.log(props);
+  const {removeFromCart} = cartSlice.actions;
 
   return (
     <div className={s.cartProductCard__main}>

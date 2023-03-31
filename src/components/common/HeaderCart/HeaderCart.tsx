@@ -9,7 +9,6 @@ export const HeaderCart = () => {
 
   const {orderedProducts} = useAppSelector(state => state.cartReducer);
   const productsInCartCount = orderedProducts.length;
-  console.log(cartSum(orderedProducts))
 
 
 

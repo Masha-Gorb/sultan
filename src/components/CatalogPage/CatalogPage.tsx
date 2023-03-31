@@ -1,14 +1,67 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import s from "./CatalogPage.module.scss";
 import gs from "../global.module.scss"
 import {ProductCardSmall} from "../common/ProductCardSmall/ProductCardSmall";
-import {data} from "../../state/state";
 import {FilterPanel} from "../common/FilterPanel/FilterPanel";
 import {Button} from "../common/Button/Button";
 import cart from "../icons/cart_button.svg";
+import {CategoryType, ProductType} from "../../types";
+import {getProducts} from "../../state/getProducts";
+import {CategoryPanel} from "../common/CategoryPanel/CategoryPanel";
 
 
 export const CatalogPage = () => {
+
+  localStorage.setItem('filters', JSON.stringify([]));
+
+  //заготовка для фильтрации через редакс тулкит
+  // const {products} = useAppSelector(state => state.productsReducer);
+  // const dispatch = useAppDispatch();
+  // const {filterProducts} = productsSlice.actions
+
+  const [filter, setFilter] = useState(['start']);
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const [disabled, setDisable] = useState(true);
+
+  const filterState = (arr: ProductType[], f: CategoryType[]) => {
+    const newArr = []
+    for (let i = 0; i < arr.length; i++) {
+      let arrCategories = arr[i].categories;
+      for (let j = 0; j < arrCategories.length; j++) {
+        for (let k = 0; k < f.length; k++) {
+          if (f[k] === arrCategories[j]) {
+            newArr.push(arr[i])
+          }
+        }
+      }
+    }
+    const newState = newArr.filter((item, i, ar) => ar.indexOf(item) === i)
+    setProducts(newState)
+    return newState
+  };
+
+  const removeFilterHandler = () => {
+    setFilter([])
+    localStorage.setItem('filters', JSON.stringify([]))
+    setDisable(true)
+    setProducts(getProducts())
+  };
+
+  const setFilterHandler = (category: string) => {
+    //при повторном клике на фильтр - убирать его из выбранных
+    const newFilters = filter.includes(category) ? filter.filter(el => el !== category) : [category, ...filter]
+    setFilter(newFilters)
+    localStorage.setItem('filters', JSON.stringify(newFilters));
+    setDisable(!newFilters.length)
+  };
+
+  useEffect(()=>{
+    const f = localStorage.getItem('filters')
+    if(f){
+      setFilter(JSON.parse(f) as string[])
+    }
+    setProducts(getProducts())
+  },[]);
 
 
   return (
@@ -32,22 +85,24 @@ export const CatalogPage = () => {
       </div>
 
 
-      <div className={s.catalog__categories}>
-        <div className={s.categories__first}>Уход за телом</div>
-        <div>Уход за руками</div>
-        <div>Уход за ногами</div>
-        <div>Уход за лицом</div>
-        <div>Уход за волосами</div>
-        <div>Средства для загара</div>
-        <div>Средства для бритья</div>
-        <div>Подарочные наборы</div>
-        <div>Гигиеническая продукция</div>
-        <div>Гигиена полости рта</div>
-        <div>Бумажная продукция</div>
-      </div>
+      <CategoryPanel class={s.catalog__categories}
+                     filters={filter}
+                     setFilters={setFilterHandler}
+                     filterState={filterState}
+                     />
+
+      <button disabled={disabled} className={s.commandButton}
+              onClick={() => filterState(getProducts(), filter)}>
+        отфильтровать
+      </button>
+      <button disabled={disabled} className={s.commandButton}
+              onClick={removeFilterHandler}
+      >
+        сбросить фильтры
+      </button>
+
         <section className={s.catalog__main}>
           <aside className={s.catalog__aside}>
-
             <h3>Подбор по параметрам</h3>
             <p>тут еще подбор по цене будет</p>
 
@@ -66,89 +121,16 @@ export const CatalogPage = () => {
                          foo={() => alert('пока тупая кнопка')}/>
             </div>
 
-            <div className={s.catalog__column}>
-              <h4>УХОД ЗА ТЕЛОМ</h4>
-              <ul>
-                <li>Эпиляция и депиляция</li>
-                <li>Средства для ванны и душа</li>
-                <li>Скрабы, пилинги и пр.</li>
-                <li>Мочалки и губки для тела</li>
-                <li>Кремы, лосьоны, масла</li>
-                <li>Интимный уход</li>
-                <li>Дезодоранты, антиперспиранты</li>
-                <li>Гели для душа</li>
-              </ul>
-            </div>
-            <div className={s.catalog__column}>
-            <h4>УХОД ЗА РУКАМИ</h4>
-            <ul>
-              <li>Увлажнение и питание</li>
-              <li>Средства для ногтей</li>
-              <li>Мыло твердое</li>
-              <li>Мыло жидкое</li>
-              <li>Крем для рук</li>
-              <li>Защита рук</li>
-              <li>Жидкость для снятия лака</li>
-            </ul>
-            </div>
-            <div className={s.catalog__column}>
-              <h4>УХОД ЗА НОГАМИ</h4>
-              <ul>
-                <li>Скрабы, пилинги</li>
-                <li>Пилки, ролики</li>
-                <li>Крем для ног</li>
-                <li>Дезодоранты для ног</li>
-              </ul>
-            </div>
-            <div className={s.catalog__column}>
-              <h4>УХОД ЗА ЛИЦОМ</h4>
-            <ul>
-              <li>Тональные средства</li>
-              <li>Средства для снятия макияжа</li>
-              <li>Средства для очищения</li>
-              <li>Маски, скрабы, сыворотки</li>
-              <li>Крем для лица</li>
-              <li>Крем для век</li>
-              <li>Жидкость для снятия макияжа</li>
-              <li>Гигиеническая помада</li>
-            </ul>
-            </div>
-            <div className={s.catalog__column}>
-              <h4>УХОД ЗА ВОЛОСАМИ</h4>
-            <ul>
-              <li>Шампуни</li>
-              <li>Средства для укладки</li>
-              <li>Средства для окрашивания волос</li>
-              <li>Маски, сыворотки, масла</li>
-              <li>Кондиционеры, бальзамы</li>
-            </ul>
-            </div>
-            <div className={s.catalog__column}>
-              <h4>СРЕДСТВА ДЛЯ ЗАГАРА</h4>
-              <ul>
-                <li>Средства после загара</li>
-              </ul>
-            </div>
-            <div className={s.catalog__column}>
-              <h4>СРЕДСТВА ДЛЯ БРИТЬЯ</h4>
-              <ul>
-                <li>Станки и кассеты</li>
-                <li>После бритья</li>
-                <li>Для бритья</li>
-              </ul>
-            </div>
-            <div className={s.catalog__column}>
-              <h4>ПОДАРОЧНЫЕ НАБОРЫ</h4>
-              <ul>
-                <li>Для мужчин</li>
-                <li>Для женщин</li>
-              </ul>
-            </div>
+            <CategoryPanel class={s.catalog__column}
+                           filters={filter}
+
+                           setFilters={setFilterHandler}/>
+
 
           </aside>
 
           <div className={s.catalog__cards}>
-            {data.map( m => {
+            {products.map( m => {
               return <ProductCardSmall
                 key={m.id}
                 id={m.id}
