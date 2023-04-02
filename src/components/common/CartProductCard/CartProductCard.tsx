@@ -1,15 +1,11 @@
 import s from './CartProductCard.module.scss'
 import {Button} from "../Button/Button";
 import gs from "../../global.module.scss";
-import cart from "../../icons/cart_button.svg";
-import {useAppDispatch} from "../../../store/hooks";
-import {cartSlice} from "../../../store/cartSlice";
+import trashBin from "../../icons/trashBin.svg";
+import {Counter} from "../Counter/Counter";
 
 
 export const CartProductCard = (props: any) => {
-  const dispatch = useAppDispatch();
-  const {removeFromCart} = cartSlice.actions;
-
   return (
     <div className={s.cartProductCard__main}>
 
@@ -29,7 +25,7 @@ export const CartProductCard = (props: any) => {
         <p>{props.description}</p>
       </div>
 
-      <div>счетчик</div>
+      <div><Counter/></div>
 
       <div className={s.cartProductCard__price}>
         <span>{props.price}₸</span>
@@ -37,10 +33,8 @@ export const CartProductCard = (props: any) => {
 
       <Button className={gs.buttonRound}
               title=''
-              icon={cart}
-              foo={() => (dispatch(removeFromCart(props)))}/>
-
-
+              icon={trashBin}
+              foo={() => (props.removeFromCart(props.id))}/>
     </div>
   )
 }

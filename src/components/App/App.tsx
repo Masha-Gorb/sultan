@@ -7,6 +7,7 @@ import {NotFoundPage} from "../NotFoundPage/NotFoundPage";
 import {IntroPage} from "../IntroPage/IntroPage";
 import {Layout} from "../Layout/Layout";
 import {CartPage} from "../CartPage/CartPage";
+import {AdminPage} from "../AdminPage/AdminPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="catalog" element={<CatalogPage />}/>
           <Route path="catalog/:id" element={<ProductCardPage />}/>
           <Route path="cart" element={<CartPage />}/>
+          <Route path="admin" element={<AdminPage />}/>
           <Route path="*" element={<NotFoundPage />}/>
         </Route>
       </Routes>

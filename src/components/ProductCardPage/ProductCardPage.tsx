@@ -1,4 +1,4 @@
-import { useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import s from './ProductCardPage.module.scss'
 import gs from './../global.module.scss'
 import {Button} from "../common/Button/Button";
@@ -8,18 +8,30 @@ import priceIconBlack from "../icons/priceIconBlack.svg";
 import {data} from "../../state/state";
 import {firstWord} from "../../helpers/firstWord";
 import {titleWithoutFirstWord} from "../../helpers/titleWithoutFirsWord";
+import verticalSmall from "../icons/vertical_small.svg";
+import React from "react";
 
 export const ProductCardPage = () => {
   const {id} = useParams();
   let product = data.find(el => el.id === id);
 
-  if(!product) {
+  if (!product) {
     console.error('No data here!');
     return null
   }
 
   return (
     <div className={gs.container}>
+
+      <div className={s.header__breadcrumbs}>
+        <p><Link to="/">{"Главная"}</Link></p>
+        <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
+             alt=''/>
+        <p><Link to="/catalog">{"Каталог"}</Link></p>
+        <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
+             alt=''/>
+        <p>{product.title}</p>
+      </div>
 
       <div className={s.productCardPage__wrapper}>
 
@@ -37,7 +49,7 @@ export const ProductCardPage = () => {
           <span>
             <img style={{opacity: "0.4"}} src={'/' + product.icon} alt='product icon'/>
             <span>{' ' + product.weight}</span>
-            <span>{' ' +product.unit}</span>
+            <span>{' ' + product.unit}</span>
           </span>
 
           <div className={s.productCardPage__priceBlock}>
@@ -53,8 +65,11 @@ export const ProductCardPage = () => {
 
           <div className={s.productCardPage__share}>
             <div className={s.productCardPage__shareIcon}><a href=' '><img src={share} alt={'share icon'}/></a></div>
-            <div className={s.productCardPage__shareAdd}><a href=' '>При покупке от <b>10 000 ₸</b> бесплатная доставка по Кокчетаву и области</a></div>
-            <div className={s.productCardPage__sharePriceList}><a href=' '><b>Прайс лист  <img src={priceIconBlack} alt={' pricelist icon'}/></b></a></div>
+            <div className={s.productCardPage__shareAdd}><a href=' '>При покупке от <b>10 000 ₸</b> бесплатная доставка
+              по Кокчетаву и области</a></div>
+            <div className={s.productCardPage__sharePriceList}><a href=' '><b>Прайс лист <img src={priceIconBlack}
+                                                                                              alt={' pricelist icon'}/></b></a>
+            </div>
           </div>
 
           <div className={s.productCardPage__info}>

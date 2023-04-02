@@ -1,0 +1,32 @@
+@use '/src/components/variables' as v;
+
+.modal__back {
+  position: absolute;
+  width: 900px;
+  height: 500px;
+  background-color: #3F4E65;
+}
+
+.cartModal__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 735px;
+  height: 424px;
+  background: v.$color2;
+  box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.09);
+  border-radius: 10px;
+
+}
+
+.cartModal__hidden {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 735px;
+  height: 424px;
+  background-color: #61dafb;
+  visibility: hidden;
+}

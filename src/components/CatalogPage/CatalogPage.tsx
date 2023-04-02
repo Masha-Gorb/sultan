@@ -8,20 +8,24 @@ import trashBin from "../icons/trashBin.svg";
 import {CategoryPanel} from "../common/CategoryPanel/CategoryPanel";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {productsSlice, resetSorting} from "../../store/productsSlice";
+import {Link} from "react-router-dom";
+import verticalSmall from "../icons/vertical_small.svg";
 
 
 export const CatalogPage = () => {
   const {filteredProducts, filters} = useAppSelector(state => state.productsReducer);
   const dispatch = useAppDispatch();
-  const {filterProducts,
+  const {
+    filterProducts,
     setProducts,
     setFilters,
     resetFilters,
     sortByName,
     sortByPriceLowToHigh,
-    sortByPriceHighToLow} = productsSlice.actions
+    sortByPriceHighToLow
+  } = productsSlice.actions
 
-  const [disabled,setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(true)
 
   const removeFilterHandler = () => {
     dispatch(resetFilters())
@@ -36,30 +40,38 @@ export const CatalogPage = () => {
   useEffect(() => {
     dispatch(setProducts())
     dispatch(filterProducts())
-  }, []);
+  }, [dispatch, filterProducts, setProducts]);
 
-  useEffect(()=>{
-    setDisabled(!filters.categories.length &&!filters.manufacturer.length &&!filters.brand.length)
-  },[filters])
+  useEffect(() => {
+    setDisabled(!filters.categories.length && !filters.manufacturer.length && !filters.brand.length)
+  }, [filters])
 
   return (
     <div className={gs.container}>
+
+      <div className={s.header__breadcrumbs}>
+        <p><Link to="/">{"Главная"}</Link></p>
+        <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
+             alt=''/>
+        <p><Link to="/catalog">{"Каталог"}</Link></p>
+      </div>
+
       <div className={s.catalog__page}>
 
 
         <div className={s.catalog__titleAndSorting}>
           <h1 className={s.h1}>Косметика и гигиена</h1>
           <div className={s.catalog__sorting}>
-              <button onClick={() => dispatch(resetSorting())} className={s.btn}>
-                <span><b>{'Сортировка: '}</b>(по клику сброс сортировки)</span>
-              </button>
-              <div className={s.dropdown}>
-                <div className={s.btn__list}>
-                  <button onClick={() => dispatch(sortByName())}>sort by name</button>
-                  <button onClick={() => dispatch(sortByPriceLowToHigh())}>sort price low</button>
-                  <button onClick={() => dispatch(sortByPriceHighToLow())}>sort by price high</button>
-                </div>
+            <button onClick={() => dispatch(resetSorting())} className={s.btn}>
+              <span><b>{'Сортировка: '}</b>(по клику сброс сортировки)</span>
+            </button>
+            <div className={s.dropdown}>
+              <div className={s.btn__list}>
+                <button onClick={() => dispatch(sortByName())}>sort by name</button>
+                <button onClick={() => dispatch(sortByPriceLowToHigh())}>sort price low</button>
+                <button onClick={() => dispatch(sortByPriceHighToLow())}>sort by price high</button>
               </div>
+            </div>
           </div>
         </div>
 
@@ -72,12 +84,14 @@ export const CatalogPage = () => {
 
         <button disabled={disabled} className={s.commandButton}
                 onClick={() => (dispatch(filterProducts()))}>
-          отфильтровать (эти кнопки для удобства: фильтрация так же работает при клике на категорию или по кнопке Применить в сайдбаре)
+          отфильтровать (эти кнопки для удобства: фильтрация так же работает при клике на категорию или по кнопке
+          Применить в сайдбаре)
         </button>
         <button disabled={disabled} className={s.commandButton}
                 onClick={removeFilterHandler}
         >
-          сбросить фильтры (эти кнопки для удобства: сброс фильтров так же работает по повторному клику на категорию и на кнопке с корзиной в сайдбаре)
+          сбросить фильтры (эти кнопки для удобства: сброс фильтров так же работает по повторному клику на категорию и
+          на кнопке с корзиной в сайдбаре)
         </button>
 
         <section className={s.catalog__main}>

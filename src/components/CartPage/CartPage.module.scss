@@ -1,13 +1,70 @@
 @use '/src/components/variables' as v;
 
+.header__breadcrumbs {
+  display: flex;
+  font-size: 14px;
+  color: v.$color4;
+  p {
+    margin-right: 10px;
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      color: v.$color4;
+    }
+  }
+}
+
+
 .cartPage__wrapper {
   display: flex;
   flex-direction: column;
   text-align: left;
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 }
 
+.cartPage__sum {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  p {
+    font-size: 30px;
+  }
+}
 
-h1 {
-  font-size: 40px;
-  font-weight: 500;
+.cartModal__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 735px;
+  height: 424px;
+  background: v.$color2;
+  box-shadow: 200px 200px 200px 300px rgba(43, 28, 1, 0.09);
+  border-radius: 10px;
+  margin-left: 300px;
+  button {
+    width: 100px;
+    height: 50px;
+    background: v.$color3;
+    border: transparent;
+    border-radius: 20px;
+    a {
+      color: v.$color4;
+      text-decoration: none;
+    }
+  }:hover {
+  background-color: v.$color5;
+     }
+}
+
+.cartModal__hidden {
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
 }

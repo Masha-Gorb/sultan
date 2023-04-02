@@ -13,6 +13,22 @@ h1 {
   margin: 0;
 }
 
+.header__breadcrumbs {
+  display: flex;
+  font-size: 14px;
+  color: v.$color4;
+
+  p {
+    margin-right: 10px;
+
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      color: v.$color4;
+    }
+  }
+}
+
 .catalog__main {
   display: flex;
 }
@@ -25,22 +41,6 @@ h1 {
   margin-top: 50px;
   margin-bottom: 20px;
 
-  label {
-    font-size: 16px;
-  }
-;
-
-  select {
-    font-size: 16px;
-    color: v.$color4;
-    border: none;
-  }
-;
-
-  option {
-    color: #61dafb;
-  }
-
   .btn {
     background-color: transparent;
     padding: 10px;
@@ -49,6 +49,7 @@ h1 {
     margin-right: 20px;
 
   }
+
   :hover {
     background-color: v.$color3;
     border: transparent;

@@ -10,6 +10,7 @@ export const IntroPage = () => {
       <div className={s.introPage__wrapper}>
         <h1>Это главная страница</h1>
         <div>Перейдите в <Link to="/catalog">каталог</Link></div>
+        <div>Перейдите в <Link to="/admin">Микроадминку :)</Link></div>
       </div>
 
     </div>

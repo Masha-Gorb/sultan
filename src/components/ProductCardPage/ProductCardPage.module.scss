@@ -107,3 +107,17 @@
   }
 
 }
+
+.header__breadcrumbs {
+  display: flex;
+  font-size: 14px;
+  color: v.$color4;
+  p {
+    margin-right: 10px;
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      color: v.$color4;
+    }
+  }
+}

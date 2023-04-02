@@ -1,12 +1,14 @@
 @use '/src/components/variables' as v;
 
+
 .cartProductCard__main {
   display: flex;
   justify-content: space-between;
   height: 170px;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  border-top: 2px dashed rgba(63, 78, 101, 0.45);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-top: 1px dashed rgba(63, 78, 101, 0.3);
+  border-bottom: 1px dashed rgba(63, 78, 101, 0.1);
 
   .cartProductCard__img {
     display: flex;
@@ -16,7 +18,6 @@
     img {
       height: 190px;
     }
-
   }
 }
 

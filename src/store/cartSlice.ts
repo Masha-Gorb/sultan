@@ -17,8 +17,11 @@ export const cartSlice = createSlice({
     addToCart(state, action: PayloadAction<ProductType>) {
       state.orderedProducts.push(action.payload)
     },
-    removeFromCart(state, action: PayloadAction<ProductType>) {
-      state.orderedProducts.filter(f => f.id !== action.payload.id)
+    removeFromCart(state, action: PayloadAction<string>) {
+      const index = state.orderedProducts.findIndex(n => n.id === action.payload);
+      if (index !== -1) {
+        state.orderedProducts.splice(index, 1);
+      }
     },
     deleteCart(state) {
       state.orderedProducts = []
@@ -27,6 +30,6 @@ export const cartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart } = cartSlice.actions
+export const { addToCart, removeFromCart } = cartSlice.actions
 // export const selectCount = (state: any) => state.cart.value
 export default cartSlice.reducer

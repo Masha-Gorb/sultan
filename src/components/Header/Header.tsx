@@ -4,7 +4,6 @@ import header_email from './../icons/header_email.svg';
 import logo from './../icons/header__logo.svg'
 import catalogButton from './../icons/catalog_button.svg'
 import vertical from './../icons/vertical.svg'
-import verticalSmall from './../icons/vertical_small.svg'
 import cta from './../icons/header__cta.png'
 import s from "./Header.module.scss";
 import gs from "../global.module.scss";
@@ -16,6 +15,7 @@ import {Link} from "react-router-dom";
 
 
 export const Header = () => {
+
   return (
     <div>
       <div className={s.header__content}>
@@ -42,13 +42,16 @@ export const Header = () => {
             </div>
 
             <div className={s.header__links}>
-                <a href=" ">О компании</a>
-                <span><img style={{height: "40px", marginLeft: "20px", marginRight: "20px",}} src={vertical} alt=''/></span>
-                <a href=" ">Доставка и оплата</a>
-                <span><img style={{height: "40px", marginLeft: "20px", marginRight: "20px"}} src={vertical} alt=''/></span>
-                <a href=" ">Возврат</a>
-                <span><img style={{height: "40px", marginLeft: "20px", marginRight: "20px"}} src={vertical} alt=''/></span>
-                <a href=" ">Контакты</a>
+              <a href=" ">О компании</a>
+              <span><img style={{height: "40px", marginLeft: "20px", marginRight: "20px",}} src={vertical}
+                         alt=''/></span>
+              <a href=" ">Доставка и оплата</a>
+              <span><img style={{height: "40px", marginLeft: "20px", marginRight: "20px"}} src={vertical}
+                         alt=''/></span>
+              <a href=" ">Возврат</a>
+              <span><img style={{height: "40px", marginLeft: "20px", marginRight: "20px"}} src={vertical}
+                         alt=''/></span>
+              <a href=" ">Контакты</a>
             </div>
           </nav>
 
@@ -82,14 +85,6 @@ export const Header = () => {
 
             <HeaderCart/>
           </div>
-
-          <div className={s.header__breadcrumbs}>
-            <p>Главная</p>
-            <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall} alt=''/>
-            <p>Косметика и гигиена</p>
-          </div>
-
-
         </div>
       </div>
     </div>

@@ -10,9 +10,12 @@ import {useAppDispatch} from "../../../store/hooks";
 import {addToCart} from "../../../store/cartSlice";
 
 export const ProductCardSmall = (props: ProductType) => {
-
   const dispatch = useAppDispatch();
 
+  const addToCartHandler = () => {
+    dispatch(addToCart(props));
+    alert('Товар добавлен в корзину')
+  }
 
   return (
     <div className={s.catalogCard}>
@@ -46,7 +49,7 @@ export const ProductCardSmall = (props: ProductType) => {
         <Button className={gs.buttonSmall}
                 title='В корзину'
                 icon={cart}
-                foo={() => (dispatch(addToCart(props)))}/>
+                foo={addToCartHandler}/>
       </div>
 
 
