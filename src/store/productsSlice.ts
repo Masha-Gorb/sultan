@@ -1,40 +1,100 @@
-import {createSlice} from '@reduxjs/toolkit'
-import {ProductType} from "../types";
+import {createSlice, current, PayloadAction} from '@reduxjs/toolkit'
+import {FilterType, ProductType} from "../types";
 import {getProducts} from "../state/getProducts";
 
 export interface ProductsState {
   products: ProductType[]
+  filteredProducts: ProductType[]
+  filters: FilterType
 }
 
 const initialState: ProductsState = {
-  products: getProducts(),
+  products: [],
+  filteredProducts: [],
+  filters: {
+    categories: [],
+    brand: [],
+    manufacturer: []
+  }
 }
 
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    filterProducts (state) {
-      state.products.push()
+    filterProducts(state) {
+      const products = current(state)?.products
+      const filters = current(state)?.filters
+      if (products && filters) {
+        let idsC: string[] = []
+        if (filters.categories.length) {
+          filters.categories.forEach(filter => {
+            const filtered = products.filter(product => product.categories.includes(filter))
+            idsC.push(...filtered.map(el => el.id))
+          })
+        } else {
+          idsC.push(...products.map(el => el.id))
+        }
+
+        const uniqueIdsC = [...new Set(idsC)]
+        const filteredCat = uniqueIdsC.map(id => products.filter(product => product.id === id)[0])
+        const filteredBrand = filters.brand.length ? filteredCat.filter(el => filters.brand.includes(el.brand)) : filteredCat
+        const filteredMan = filters.manufacturer.length ? filteredBrand.filter(el => filters.manufacturer.includes(el.manufacturer)) : filteredBrand
+
+        state.filteredProducts = filteredMan
+      }
+    },
+    setFilters(state, action: PayloadAction<{ name: keyof FilterType, value: string }>) {
+      const {value, name} = action.payload
+      const filters = current(state)?.filters
+      if (filters && filters[name]) {
+        const f = filters[name].includes(value)
+          ? filters[name].filter(el => el !== value)
+          : [...filters[name], value]
+        state.filters = {...state.filters, [name]: f}
+        localStorage.setItem('filters', JSON.stringify({...state.filters, [name]: f}));
+      }
+    },
+    resetFilters(state) {
+      state.filters = initialState.filters
+      localStorage.setItem('filters', JSON.stringify(initialState.filters));
+      console.log('reset')
+    },
+    setProducts(state) {
+      console.log('set')
+      state.products = getProducts()
+      state.filteredProducts = getProducts()
+      const filters = localStorage.getItem('filters')
+      if (filters) {
+        state.filters = JSON.parse(filters) as FilterType
+      }
+    },
+    sortByName(state) {
+      console.log('sortByName')
+      state.filteredProducts.sort((a, b) => a.title > b.title ? 1 : -1);
+    },
+    sortByPriceLowToHigh(state) {
+      console.log('sortByPriceLowToHigh')
+      state.filteredProducts.sort((a, b) => a.price > b.price ? 1 : -1);
+    },
+    sortByPriceHighToLow(state) {
+      console.log('sortByPriceHighToLow')
+      state.filteredProducts.sort((a, b) => a.price < b.price ? 1 : -1);
+    },
+    resetSorting(state) {
+      state.filteredProducts = getProducts()
     }
-    //   const newArr = []
-    //   for (let i = 0; i < state.products.length; i++) {
-    //     let arrCategories = state.products[i].categories;
-    //     for (let j = 0; j < arrCategories.length; j++) {
-    //       for (let k = 0; k < action.payload.length; k++) {
-    //         if (action.payload[k] === arrCategories[j]) {
-    //           newArr.push(action.payload[i])
-    //         }
-    //       }
-    //     }
-    //   }
-    //   const newState = newArr.filter((item, i, ar) => ar.indexOf(item) === i)
-    //   return newState
-    // },
   },
+
 })
 
 // Action creators are generated for each case reducer function
-// export const { FilterProducts } = productsSlice.actions
-// export const selectCount = (state: any) => state.cart.value
+export const {filterProducts,
+  setProducts,
+  setFilters,
+  sortByName,
+  sortByPriceLowToHigh,
+  sortByPriceHighToLow,
+  resetSorting} = productsSlice.actions
+export const selectCount = (state: any) => state.cart.value
 export default productsSlice.reducer

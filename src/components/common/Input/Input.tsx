@@ -6,6 +6,7 @@ export const Input = (props: any) => {
     <div className={props.className}>
       <input
              type={"text"}
+             disabled
              placeholder={props.placeholder}/>
       <button>
         <img src={search} alt=''/>

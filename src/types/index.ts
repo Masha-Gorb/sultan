@@ -16,3 +16,4 @@ export type ProductType = {
 }
 
 export type CategoryType = string
+export type FilterType = Record<'categories' | 'brand' | 'manufacturer', string[]>

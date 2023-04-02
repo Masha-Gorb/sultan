@@ -4,10 +4,6 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-    li {
-    display: inline;
-    margin-right: 20px;
-    };
 }
 
 h1 {
@@ -24,19 +20,68 @@ h1 {
 .catalog__titleAndSorting {
   display: flex;
   justify-content: space-between;
+  width: 1250px;
   align-items: end;
   margin-top: 50px;
+  margin-bottom: 20px;
+
   label {
     font-size: 16px;
-  };
+  }
+;
+
   select {
     font-size: 16px;
     color: v.$color4;
     border: none;
-  };
+  }
+;
+
   option {
     color: #61dafb;
   }
+
+  .btn {
+    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
+    border: transparent;
+    margin-right: 20px;
+
+  }
+  :hover {
+    background-color: v.$color3;
+    border: transparent;
+
+    .dropdown {
+      display: inline;
+    }
+
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+
+    .btn__list {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        text-align: left;
+        padding: 5px;
+        font-size: 16px;
+        background-color: v.$color2;
+        border: none;
+      }
+
+      :hover {
+        background-color: v.$color5;
+      }
+    }
+
+  }
+
 
 }
 
@@ -51,6 +96,7 @@ h1 {
   justify-content: space-between;
   margin-bottom: 30px;
   margin-top: 25px;
+
   div {
     display: flex;
     align-items: center;
@@ -61,17 +107,23 @@ h1 {
     box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.09);
     border-radius: 10px;
     margin-left: 10px;
+
     button {
       border: transparent;
       padding: 12px;
       border-radius: 10px;
       background-color: transparent;
-    }:hover {
-       background-color: v.$color3;
-     }
-  } .categories__first {
-      margin-left: 0;
-    };
+    }
+
+    :hover {
+      background-color: v.$color3;
+    }
+  }
+
+  .categories__first {
+    margin-left: 0;
+  }
+;
 }
 
 .catalog__aside {
@@ -83,19 +135,23 @@ h1 {
   flex-direction: column;
   margin-bottom: 30px;
   margin-top: 25px;
+
   div {
     display: flex;
     align-items: center;
     font-size: 14px;
     height: 50px;
+
     button {
       border: transparent;
       padding: 12px;
       border-radius: 10px;
       background-color: transparent;
-    }:hover {
-       background-color: v.$color3;
-     }
+    }
+
+    :hover {
+      background-color: v.$color3;
+    }
   }
 }
 

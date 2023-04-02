@@ -4,133 +4,118 @@ import gs from "../global.module.scss"
 import {ProductCardSmall} from "../common/ProductCardSmall/ProductCardSmall";
 import {FilterPanel} from "../common/FilterPanel/FilterPanel";
 import {Button} from "../common/Button/Button";
-import cart from "../icons/cart_button.svg";
-import {CategoryType, ProductType} from "../../types";
-import {getProducts} from "../../state/getProducts";
+import trashBin from "../icons/trashBin.svg";
 import {CategoryPanel} from "../common/CategoryPanel/CategoryPanel";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {productsSlice, resetSorting} from "../../store/productsSlice";
 
 
 export const CatalogPage = () => {
+  const {filteredProducts, filters} = useAppSelector(state => state.productsReducer);
+  const dispatch = useAppDispatch();
+  const {filterProducts,
+    setProducts,
+    setFilters,
+    resetFilters,
+    sortByName,
+    sortByPriceLowToHigh,
+    sortByPriceHighToLow} = productsSlice.actions
 
-  localStorage.setItem('filters', JSON.stringify([]));
-
-  //заготовка для фильтрации через редакс тулкит
-  // const {products} = useAppSelector(state => state.productsReducer);
-  // const dispatch = useAppDispatch();
-  // const {filterProducts} = productsSlice.actions
-
-  const [filter, setFilter] = useState(['start']);
-  const [products, setProducts] = useState<ProductType[]>([]);
-  const [disabled, setDisable] = useState(true);
-
-  const filterState = (arr: ProductType[], f: CategoryType[]) => {
-    const newArr = []
-    for (let i = 0; i < arr.length; i++) {
-      let arrCategories = arr[i].categories;
-      for (let j = 0; j < arrCategories.length; j++) {
-        for (let k = 0; k < f.length; k++) {
-          if (f[k] === arrCategories[j]) {
-            newArr.push(arr[i])
-          }
-        }
-      }
-    }
-    const newState = newArr.filter((item, i, ar) => ar.indexOf(item) === i)
-    setProducts(newState)
-    return newState
-  };
+  const [disabled,setDisabled] = useState(true)
 
   const removeFilterHandler = () => {
-    setFilter([])
-    localStorage.setItem('filters', JSON.stringify([]))
-    setDisable(true)
-    setProducts(getProducts())
+    dispatch(resetFilters())
+    dispatch(setProducts())
   };
 
   const setFilterHandler = (category: string) => {
-    //при повторном клике на фильтр - убирать его из выбранных
-    const newFilters = filter.includes(category) ? filter.filter(el => el !== category) : [category, ...filter]
-    setFilter(newFilters)
-    localStorage.setItem('filters', JSON.stringify(newFilters));
-    setDisable(!newFilters.length)
+    dispatch(setFilters({name: 'categories', value: category}))
   };
 
-  useEffect(()=>{
-    const f = localStorage.getItem('filters')
-    if(f){
-      setFilter(JSON.parse(f) as string[])
-    }
-    setProducts(getProducts())
-  },[]);
 
+  useEffect(() => {
+    dispatch(setProducts())
+    dispatch(filterProducts())
+  }, []);
+
+  useEffect(()=>{
+    setDisabled(!filters.categories.length &&!filters.manufacturer.length &&!filters.brand.length)
+  },[filters])
 
   return (
     <div className={gs.container}>
-    <div className={s.catalog__page}>
+      <div className={s.catalog__page}>
 
 
-      <div className={s.catalog__titleAndSorting}>
-        <h1 className={s.h1}>Косметика и гигиена</h1>
-        <div className={s.catalog__sorting}>
-          <label>
-            <b>{'Сортировка: '}</b>
-            <select>
-              <option>Название</option>
-              <option>Цена: по убыванию</option>
-              <option>Цена: по возрастанию</option>
-            </select>
-          </label>
-
+        <div className={s.catalog__titleAndSorting}>
+          <h1 className={s.h1}>Косметика и гигиена</h1>
+          <div className={s.catalog__sorting}>
+              <button onClick={() => dispatch(resetSorting())} className={s.btn}>
+                <span><b>{'Сортировка: '}</b>(по клику сброс сортировки)</span>
+              </button>
+              <div className={s.dropdown}>
+                <div className={s.btn__list}>
+                  <button onClick={() => dispatch(sortByName())}>sort by name</button>
+                  <button onClick={() => dispatch(sortByPriceLowToHigh())}>sort price low</button>
+                  <button onClick={() => dispatch(sortByPriceHighToLow())}>sort by price high</button>
+                </div>
+              </div>
+          </div>
         </div>
-      </div>
 
 
-      <CategoryPanel class={s.catalog__categories}
-                     filters={filter}
-                     setFilters={setFilterHandler}
-                     filterState={filterState}
-                     />
+        <CategoryPanel class={s.catalog__categories}
+                       filters={filters.categories}
+                       setFilters={setFilterHandler}
+                       filterState={() => (dispatch(filterProducts()))}
+        />
 
-      <button disabled={disabled} className={s.commandButton}
-              onClick={() => filterState(getProducts(), filter)}>
-        отфильтровать
-      </button>
-      <button disabled={disabled} className={s.commandButton}
-              onClick={removeFilterHandler}
-      >
-        сбросить фильтры
-      </button>
+        <button disabled={disabled} className={s.commandButton}
+                onClick={() => (dispatch(filterProducts()))}>
+          отфильтровать (эти кнопки для удобства: фильтрация так же работает при клике на категорию или по кнопке Применить в сайдбаре)
+        </button>
+        <button disabled={disabled} className={s.commandButton}
+                onClick={removeFilterHandler}
+        >
+          сбросить фильтры (эти кнопки для удобства: сброс фильтров так же работает по повторному клику на категорию и на кнопке с корзиной в сайдбаре)
+        </button>
 
         <section className={s.catalog__main}>
           <aside className={s.catalog__aside}>
             <h3>Подбор по параметрам</h3>
             <p>тут еще подбор по цене будет</p>
 
-            <FilterPanel title={'Производитель'}/>
+            <FilterPanel checked={filters.manufacturer}
+                         options={['Grifon', 'Boyscout', 'Paclan', 'Булгари Грин']}
+                         title={'Производитель'}
+                         onSelect={(value) => dispatch(setFilters({name: 'manufacturer', value}))}/>
             <hr/>
-            <FilterPanel title={'Бренд'}/>
+            <FilterPanel checked={filters.brand}
+                         options={["AOS", "GRIFON", "Nivea", "Домашний сундук", "HELP"]}
+                         title={'Бренд'}
+                         onSelect={(value) => dispatch(setFilters({name: 'brand', value}))}/>
 
             <div className={s.catalog__filterButtons}>
+
               <Button className={gs.buttonSmall}
                       title='Показать'
-                      foo={() => alert('пока тупая кнопка')}/>
+                      foo={() => dispatch(filterProducts())}/>
 
               <Button className={gs.buttonRound}
-                         title=''
-                         icon={cart}
-                         foo={() => alert('пока тупая кнопка')}/>
+                      title=''
+                      icon={trashBin}
+                      foo={removeFilterHandler}/>
             </div>
 
             <CategoryPanel class={s.catalog__column}
-                           filters={filter}
-
+                           filters={filters.categories}
                            setFilters={setFilterHandler}/>
 
 
           </aside>
 
           <div className={s.catalog__cards}>
-            {products.map( m => {
+            {filteredProducts.map(m => {
               return <ProductCardSmall
                 key={m.id}
                 id={m.id}
@@ -151,9 +136,12 @@ export const CatalogPage = () => {
           </div>
         </section>
 
-      <div className={s.catalog__bottomText}>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.</p>
-      </div>
+        <div className={s.catalog__bottomText}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis
+            iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed
+            pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim,
+            malesuada.</p>
+        </div>
 
       </div>
     </div>
