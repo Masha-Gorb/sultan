@@ -83,7 +83,21 @@ export const productsSlice = createSlice({
     },
     resetSorting(state) {
       state.filteredProducts = getProducts()
-    }
+    },
+    addNewProduct(state, action: PayloadAction<ProductType>) {
+      state.products.push(action.payload)
+      const currentState = current(state).products
+      console.log(currentState)
+      localStorage.setItem('state', JSON.stringify(currentState))
+    },
+
+    deleteProduct(state, action: PayloadAction<string>) {
+      const products = current(state).products
+      const newArr = products.filter(f => f.id !== action.payload)
+      state.products = newArr
+      localStorage.setItem('state', JSON.stringify(newArr))
+    },
+
   },
 
 })
@@ -92,6 +106,8 @@ export const productsSlice = createSlice({
 export const {filterProducts,
   setProducts,
   setFilters,
+  addNewProduct,
+  deleteProduct,
   sortByName,
   sortByPriceLowToHigh,
   sortByPriceHighToLow,

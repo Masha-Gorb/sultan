@@ -97,7 +97,7 @@ export const CatalogPage = () => {
         <section className={s.catalog__main}>
           <aside className={s.catalog__aside}>
             <h3>Подбор по параметрам</h3>
-            <p>тут еще подбор по цене будет</p>
+            <p><Link to="/admin">{"Перейти в админку"}</Link></p>
 
             <FilterPanel checked={filters.manufacturer}
                          options={['Grifon', 'Boyscout', 'Paclan', 'Булгари Грин']}

@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 import {useAppDispatch} from "../../../store/hooks";
 import {addToCart} from "../../../store/cartSlice";
 
+
 export const ProductCardSmall = (props: ProductType) => {
   const dispatch = useAppDispatch();
 
@@ -16,6 +17,7 @@ export const ProductCardSmall = (props: ProductType) => {
     dispatch(addToCart(props));
     alert('Товар добавлен в корзину')
   }
+
 
   return (
     <div className={s.catalogCard}>
@@ -39,6 +41,7 @@ export const ProductCardSmall = (props: ProductType) => {
 
       <div className={s.productCardSmall__description}>
         <p>Штрихкод: <b>{props.barcode}</b></p>
+        <p>Id: <b>{props.id}</b></p>
         <p>Производитель: <b>{props.manufacturer}</b></p>
         <p>Бренд: <b>{props.brand}</b></p>
       </div>

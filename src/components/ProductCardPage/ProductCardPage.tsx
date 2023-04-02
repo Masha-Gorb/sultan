@@ -12,6 +12,7 @@ import verticalSmall from "../icons/vertical_small.svg";
 import React from "react";
 
 export const ProductCardPage = () => {
+
   const {id} = useParams();
   let product = data.find(el => el.id === id);
 
