@@ -13,7 +13,7 @@ export const AdminPage = () => {
   const {addNewProduct, setProducts, deleteProduct} = productsSlice.actions
 
   let [id, setId] = useState('')
-  let [deleteId, setDeleteID] = useState('')
+  let [deleteBarcode, setDeleteBarcode] = useState('')
   let [title, setTitle] = useState('')
   let [unit, setUnit] = useState('')
   let [weight, setWeight] = useState(0)
@@ -53,8 +53,8 @@ export const AdminPage = () => {
     setPrice(0)
   };
 
-  const removeProduct = (id: string) => {
-    dispatch(deleteProduct(id))
+  const removeProduct = (barcode: string) => {
+    dispatch(deleteProduct(barcode))
     dispatch(setProducts())
   }
 
@@ -172,10 +172,10 @@ export const AdminPage = () => {
             <input style={{width: '300px'}}
                         type="text"
                         name='input9'
-                        value={deleteId}
-                        placeholder={'Введите id продукта который хотите удалить'}
-                        onChange={(event) => setDeleteID(event.target.value)}/>
-            <button onClick={() => removeProduct(deleteId)}>remove product with id = {deleteId}</button>
+                        value={deleteBarcode}
+                        placeholder={'Введите штрихкод продукта который хотите удалить'}
+                        onChange={(event) => setDeleteBarcode(event.target.value)}/>
+            <button onClick={() => removeProduct(deleteBarcode)}>удалить продукт со штрихкодом = {deleteBarcode}</button>
           </div>
 
           <div className={s.admin__products}>

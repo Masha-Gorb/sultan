@@ -41,9 +41,9 @@ export const ProductCardSmall = (props: ProductType) => {
 
       <div className={s.productCardSmall__description}>
         <p>Штрихкод: <b>{props.barcode}</b></p>
-        <p>Id: <b>{props.id}</b></p>
         <p>Производитель: <b>{props.manufacturer}</b></p>
         <p>Бренд: <b>{props.brand}</b></p>
+        <p>Тип ухода: <b>{props.categories.map(m => `${m},`)}</b></p>
       </div>
 
 

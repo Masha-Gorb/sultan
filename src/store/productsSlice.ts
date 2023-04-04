@@ -93,7 +93,7 @@ export const productsSlice = createSlice({
 
     deleteProduct(state, action: PayloadAction<string>) {
       const products = current(state).products
-      const newArr = products.filter(f => f.id !== action.payload)
+      const newArr = products.filter(f => f.barcode !== action.payload)
       state.products = newArr
       localStorage.setItem('state', JSON.stringify(newArr))
     },

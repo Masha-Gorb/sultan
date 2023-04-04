@@ -3,9 +3,18 @@ import {Button} from "../Button/Button";
 import gs from "../../global.module.scss";
 import trashBin from "../../icons/trashBin.svg";
 import {Counter} from "../Counter/Counter";
+import {addToCart} from "../../../store/cartSlice";
+import {useAppDispatch} from "../../../store/hooks";
 
 
 export const CartProductCard = (props: any) => {
+
+  const dispatch = useAppDispatch();
+  const addToCartHandler = () => {
+    dispatch(addToCart(props));
+    alert('Товар добавлен в корзину')
+  }
+
   return (
     <div className={s.cartProductCard__main}>
 
@@ -25,7 +34,9 @@ export const CartProductCard = (props: any) => {
         <p>{props.description}</p>
       </div>
 
-      <div><Counter/></div>
+      <div>
+        <Counter product={props} add={addToCartHandler}/>
+      </div>
 
       <div className={s.cartProductCard__price}>
         <span>{props.price}₸</span>

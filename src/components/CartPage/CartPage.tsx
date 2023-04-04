@@ -60,7 +60,7 @@ export const CartPage = () => {
           <div className={s.cartPage__products}>
             {orderedProducts.map(m => {
               return <CartProductCard
-                key={m.id}
+                key={Math.random()}
                 id={m.id}
                 img={m.img}
                 title={m.title}

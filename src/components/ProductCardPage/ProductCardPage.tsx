@@ -5,21 +5,34 @@ import {Button} from "../common/Button/Button";
 import cart from "../icons/cart_button.svg";
 import share from "../icons/share.svg";
 import priceIconBlack from "../icons/priceIconBlack.svg";
-import {data} from "../../state/state";
 import {firstWord} from "../../helpers/firstWord";
 import {titleWithoutFirstWord} from "../../helpers/titleWithoutFirsWord";
 import verticalSmall from "../icons/vertical_small.svg";
 import React from "react";
+import {Counter} from "../common/Counter/Counter";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {addToCart} from "../../store/cartSlice";
 
 export const ProductCardPage = () => {
 
   const {id} = useParams();
-  let product = data.find(el => el.id === id);
+  const {products} = useAppSelector(state => state.productsReducer);
+  const filterPr = products.filter(f => f.id === id)[0];
+  const product = products.filter(el => el.id === id)[0];
+
+  const dispatch = useAppDispatch();
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(filterPr));
+    alert('Товар добавлен в корзину')
+  }
 
   if (!product) {
     console.error('No data here!');
     return null
   }
+
+
 
   return (
     <div className={gs.container}>
@@ -56,12 +69,14 @@ export const ProductCardPage = () => {
           <div className={s.productCardPage__priceBlock}>
             <p>{product.price}₸</p>
 
-            <div>счетчик компонентом</div>
+            <div>
+              <Counter product={filterPr} add={addToCartHandler}/>
+            </div>
 
             <Button className={gs.buttonSmall}
                     title='В корзину'
                     icon={cart}
-                    foo={() => alert('пока тупая кнопка')}/>
+                    foo={addToCartHandler}/>
           </div>
 
           <div className={s.productCardPage__share}>
@@ -69,7 +84,7 @@ export const ProductCardPage = () => {
             <div className={s.productCardPage__shareAdd}><a href=' '>При покупке от <b>10 000 ₸</b> бесплатная доставка
               по Кокчетаву и области</a></div>
             <div className={s.productCardPage__sharePriceList}><a href=' '><b>Прайс лист <img src={priceIconBlack}
-                                                                                              alt={' pricelist icon'}/></b></a>
+                                                                                              alt={' price-list icon'}/></b></a>
             </div>
           </div>
 

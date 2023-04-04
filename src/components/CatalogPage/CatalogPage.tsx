@@ -25,7 +25,8 @@ export const CatalogPage = () => {
     sortByPriceHighToLow
   } = productsSlice.actions
 
-  const [disabled, setDisabled] = useState(true)
+
+  const [disabled, setDisabled] = useState(true);
 
   const removeFilterHandler = () => {
     dispatch(resetFilters())
@@ -63,13 +64,13 @@ export const CatalogPage = () => {
           <h1 className={s.h1}>Косметика и гигиена</h1>
           <div className={s.catalog__sorting}>
             <button onClick={() => dispatch(resetSorting())} className={s.btn}>
-              <span><b>{'Сортировка: '}</b>(по клику сброс сортировки)</span>
+              <span><b>{'Сортировка: '}</b></span>
             </button>
             <div className={s.dropdown}>
               <div className={s.btn__list}>
-                <button onClick={() => dispatch(sortByName())}>sort by name</button>
-                <button onClick={() => dispatch(sortByPriceLowToHigh())}>sort price low</button>
-                <button onClick={() => dispatch(sortByPriceHighToLow())}>sort by price high</button>
+                <button onClick={() => dispatch(sortByName())}>Название</button>
+                <button onClick={() => dispatch(sortByPriceLowToHigh())}>Цена: низкая</button>
+                <button onClick={() => dispatch(sortByPriceHighToLow())}>Цена: высокая</button>
               </div>
             </div>
           </div>
@@ -81,18 +82,6 @@ export const CatalogPage = () => {
                        setFilters={setFilterHandler}
                        filterState={() => (dispatch(filterProducts()))}
         />
-
-        <button disabled={disabled} className={s.commandButton}
-                onClick={() => (dispatch(filterProducts()))}>
-          отфильтровать (эти кнопки для удобства: фильтрация так же работает при клике на категорию или по кнопке
-          Применить в сайдбаре)
-        </button>
-        <button disabled={disabled} className={s.commandButton}
-                onClick={removeFilterHandler}
-        >
-          сбросить фильтры (эти кнопки для удобства: сброс фильтров так же работает по повторному клику на категорию и
-          на кнопке с корзиной в сайдбаре)
-        </button>
 
         <section className={s.catalog__main}>
           <aside className={s.catalog__aside}>
@@ -121,9 +110,12 @@ export const CatalogPage = () => {
                       foo={removeFilterHandler}/>
             </div>
 
+
             <CategoryPanel class={s.catalog__column}
                            filters={filters.categories}
-                           setFilters={setFilterHandler}/>
+                           setFilters={setFilterHandler}
+                           filterState={() => (dispatch(filterProducts()))}
+            />
 
 
           </aside>
@@ -146,8 +138,9 @@ export const CatalogPage = () => {
                 categories={m.categories}
               />
             })}
-
           </div>
+
+
         </section>
 
         <div className={s.catalog__bottomText}>
