@@ -77,10 +77,13 @@ export const Header = () => {
 
             <img style={{height: "40px", marginLeft: "20px", marginRight: "20px"}} src={vertical} alt=''/>
 
-            <Button className={gs.buttonBig}
-                    title='Прайс-лист'
-                    icon={priceIcon}
-                    foo={() => alert('пока тупая кнопка')}/>
+            <div className={s.header__priceListButton}>
+              <Button className={gs.buttonBig}
+                      title='Прайс-лист'
+                      icon={priceIcon}
+                      foo={() => alert('пока тупая кнопка')}/>
+            </div>
+
 
             <img style={{height: "40px", marginLeft: "30px", marginRight: "20px"}} src={vertical} alt=''/>
 

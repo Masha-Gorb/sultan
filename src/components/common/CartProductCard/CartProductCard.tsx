@@ -6,7 +6,6 @@ import {Counter} from "../Counter/Counter";
 import {addToCart} from "../../../store/cartSlice";
 import {useAppDispatch} from "../../../store/hooks";
 
-
 export const CartProductCard = (props: any) => {
 
   const dispatch = useAppDispatch();

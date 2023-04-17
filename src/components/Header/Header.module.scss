@@ -10,6 +10,9 @@
   img {
     height: 16px;
   }
+  @media (max-width: 989px) {
+    display: none;
+  }
 }
 
 
@@ -49,6 +52,17 @@
   display: flex;
   align-items: center;
   height: 107px;
+  Input {
+    @media (max-width: 1320px) {
+      width: 200px;
+    }
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  @media (max-width: 1320px) {
+    justify-content: space-evenly;
+  }
 }
 
 .header__logo {
@@ -75,11 +89,23 @@
   a {
     font-size: 14px;
   };
+  @media (max-width: 1320px) {
+    display: none;
+  }
 }
 
 .cta__img {
   height: 92px;
   margin-left: 20px;
+  @media (max-width: 1320px) {
+    display: none;
+  }
+}
+
+.header__priceListButton {
+  @media (max-width: 1320px) {
+    display: none;
+  }
 }
 
 .header__breadcrumbs {

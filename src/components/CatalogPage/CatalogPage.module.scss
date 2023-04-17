@@ -163,6 +163,12 @@ h1 {
   grid-template-columns: 330px 330px 330px;
   gap: 20px;
   margin-left: 90px;
+  @media (max-width: 1320px) {
+    grid-template-columns: 330px 330px;
+  }
+  @media (max-width: 1000px) {
+    grid-template-columns: 330px;
+  }
 }
 
 .catalog__bottomText {
