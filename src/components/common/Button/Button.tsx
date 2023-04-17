@@ -1,4 +1,13 @@
-export const Button = (props: any) => {
+
+type propsType = {
+  className: string
+  disabled?: boolean
+  foo?: () => void
+  title: string
+  icon?: string
+}
+
+export const Button = (props: propsType) => {
   return (
     <div>
       <button className={props.className}

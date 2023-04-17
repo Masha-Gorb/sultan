@@ -1,4 +1,4 @@
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import s from './ProductCardPage.module.scss'
 import gs from './../global.module.scss'
 import {Button} from "../common/Button/Button";
@@ -7,11 +7,11 @@ import share from "../icons/share.svg";
 import priceIconBlack from "../icons/priceIconBlack.svg";
 import {firstWord} from "../../helpers/firstWord";
 import {titleWithoutFirstWord} from "../../helpers/titleWithoutFirsWord";
-import verticalSmall from "../icons/vertical_small.svg";
 import React from "react";
 import {Counter} from "../common/Counter/Counter";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {addToCart} from "../../store/cartSlice";
+import {Breadcrumbs} from "../common/Breadcrumbs/Breadcrumbs";
 
 export const ProductCardPage = () => {
 
@@ -32,20 +32,19 @@ export const ProductCardPage = () => {
     return null
   }
 
+  const productTitle = product.title
+
 
 
   return (
     <div className={gs.container}>
 
-      <div className={s.header__breadcrumbs}>
-        <p><Link to="/">{"Главная"}</Link></p>
-        <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
-             alt=''/>
-        <p><Link to="/catalog">{"Каталог"}</Link></p>
-        <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
-             alt=''/>
-        <p>{product.title}</p>
-      </div>
+      <Breadcrumbs address={[
+        {title: "Главная", link: "/"},
+        {title: "Каталог", link: "/catalog"},
+        {title: productTitle, link: ""},
+      ]}/>
+
 
       <div className={s.productCardPage__wrapper}>
 

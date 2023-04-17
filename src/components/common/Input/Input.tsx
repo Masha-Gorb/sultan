@@ -1,7 +1,11 @@
 import search from './../../icons/search.svg'
 
+type PropsType = {
+  className:string
+  placeholder: string
+}
 
-export const Input = (props: any) => {
+export const Input = (props: PropsType) => {
   return (
     <div className={props.className}>
       <input

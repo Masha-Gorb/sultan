@@ -106,6 +106,7 @@ export const productsSlice = createSlice({
 export const {filterProducts,
   setProducts,
   setFilters,
+  resetFilters,
   addNewProduct,
   deleteProduct,
   sortByName,

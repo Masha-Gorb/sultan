@@ -10,9 +10,6 @@ export const HeaderCart = () => {
   const {orderedProducts} = useAppSelector(state => state.cartReducer);
   const productsInCartCount = orderedProducts.length;
 
-
-
-
   return (
     <div className={s.header__cart}>
       <div className={s.cart__icon}>

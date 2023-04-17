@@ -9,7 +9,7 @@ import {CategoryPanel} from "../common/CategoryPanel/CategoryPanel";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {productsSlice, resetSorting} from "../../store/productsSlice";
 import {Link} from "react-router-dom";
-import verticalSmall from "../icons/vertical_small.svg";
+import {Breadcrumbs} from "../common/Breadcrumbs/Breadcrumbs";
 
 
 export const CatalogPage = () => {
@@ -50,15 +50,9 @@ export const CatalogPage = () => {
   return (
     <div className={gs.container}>
 
-      <div className={s.header__breadcrumbs}>
-        <p><Link to="/">{"Главная"}</Link></p>
-        <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
-             alt=''/>
-        <p><Link to="/catalog">{"Каталог"}</Link></p>
-      </div>
+      <Breadcrumbs address={[{title: "Главная", link: "/"}, {title: "Каталог", link: "/catalog"}]}/>
 
       <div className={s.catalog__page}>
-
 
         <div className={s.catalog__titleAndSorting}>
           <h1 className={s.h1}>Косметика и гигиена</h1>

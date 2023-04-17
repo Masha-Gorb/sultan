@@ -58,10 +58,11 @@ export const Header = () => {
           <div className={s.header__toolbar}>
             <img className={s.header__logo} src={logo} alt=''/>
             <div className={s.header__buttonAndInputContainer}>
-              <Button className={gs.buttonMedium}
-                      title={<Link to="/catalog">{"Каталог"}</Link>}
-                      icon={catalogButton}
-                      foo={() => console.log('пока тупая кнопка')}/>
+              <Link to="/catalog">
+                <Button className={gs.buttonMedium}
+                        title="Каталог"
+                        icon={catalogButton}/>
+              </Link>
               <Input className={gs.inputWide}
                      placeholder={'      Поиск...'}/>
             </div>

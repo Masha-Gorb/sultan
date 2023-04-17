@@ -6,9 +6,8 @@ import {cartSlice} from "../../store/cartSlice";
 import {Button} from "../common/Button/Button";
 import {cartSum} from "../../helpers/cartSum";
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import verticalSmall from "../icons/vertical_small.svg";
 import {CartModal} from "../common/CartModal/CartModal";
+import {Breadcrumbs} from "../common/Breadcrumbs/Breadcrumbs";
 
 
 export const CartPage = () => {
@@ -42,15 +41,12 @@ export const CartPage = () => {
     <div>
       <div className={gs.container}>
 
-        <div className={s.header__breadcrumbs}>
-          <p><Link to="/">{"Главная"}</Link></p>
-          <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
-               alt=''/>
-          <p><Link to="/catalog">{"Каталог"}</Link></p>
-          <img style={{height: "16px", marginLeft: "10px", marginRight: "20px", marginTop: "15px"}} src={verticalSmall}
-               alt=''/>
-          <p>{"Корзина"}</p>
-        </div>
+        <Breadcrumbs address={[
+          {title: "Главная", link: "/"},
+          {title: "Каталог", link: "/catalog"},
+          {title: "Корзина", link: ""},
+        ]}/>
+
 
         <div className={s.cartPage__wrapper}>
           <h1>Корзина</h1>
